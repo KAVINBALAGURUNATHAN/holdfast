@@ -1,0 +1,79 @@
+FREELANCE WEB DEVELOPMENT SERVICES AGREEMENT
+
+Agreement No.: HF/2026/WD-0142
+Date of Agreement: 01 December 2026
+Place: Bengaluru, Karnataka
+
+This Agreement is entered into between:
+
+Client: Sharma Organics Private Limited, a company incorporated under the Companies Act, 2013, having its registered office at 14, 2nd Cross, Indiranagar, Bengaluru 560038 (GSTIN 29AABCS1234F1Z5), represented by Ms. Priya Sharma, Director.
+Client Email: priya@sharmaorganics.in
+
+Freelancer: Arjun Mehta, an independent web developer residing at Flat 302, Lakeview Apartments, Kothrud, Pune 411038 (PAN ABCPM1234K), registered as an MSME (Udyam No. UDYAM-MH-26-0012345).
+Freelancer Email: arjun.mehta.dev@gmail.com
+
+1. SCOPE OF WORK
+
+The Freelancer shall design and build a responsive e-commerce website for the Client's organic food products, including a product catalogue, cart, Razorpay checkout and an admin panel, as described in the milestones below.
+
+2. PROJECT FEE AND PAYMENT TERMS
+
+The total project fee is INR 1,50,000 (Rupees One Lakh Fifty Thousand only), exclusive of GST at 18%, payable in three milestones. Each milestone amount shall be placed in escrow by the Client before work on that milestone begins, and released within 7 working days of the Client accepting the deliverable against the acceptance criteria below. TDS under Section 194J, if applicable, shall be deducted by the Client.
+
+3. MILESTONES
+
+Milestone 1: UI/UX Design and Clickable Prototype
+Amount: Rs. 30,000
+Due Date: 20/12/2026
+Description: Wireframes and high-fidelity designs for all key pages, delivered as a clickable Figma prototype.
+Acceptance Criteria:
+- Figma prototype covers home, product listing, product detail, cart and checkout pages
+- Designs are responsive with mobile and desktop layouts for every page
+- Brand colours and logo from the Client's brand guide are applied consistently
+- Client feedback from one review round is incorporated
+
+Milestone 2: Frontend and Backend Development
+Amount: ₹75,000
+Due Date: 31 January 2027
+Description: Development of the working website on a staging server based on the approved designs.
+Acceptance Criteria:
+- Product catalogue with search and category filters works on staging
+- Cart and Razorpay checkout complete a test payment in test mode
+- Admin panel allows adding, editing and deleting products
+- Lighthouse performance score of at least 85 on mobile for the home page
+- Source code is pushed to the Client's private GitHub repository
+
+Milestone 3: Deployment, Training and Handover
+Amount: INR 45,000
+Due Date: 15 February 2027
+Description: Production deployment, documentation and handover.
+Acceptance Criteria:
+- Website is deployed on the Client's production domain with HTTPS enabled
+- Admin user guide document is delivered in PDF format
+- One live training session of at least one hour is conducted for the Client's staff
+- 30-day bug-fix support period is confirmed in writing
+
+4. ACCEPTANCE AND REVIEW
+
+The Client shall review each deliverable within 5 working days of submission. If the deliverable does not meet the acceptance criteria, the Client shall provide written reasons, and the Freelancer shall have 7 days to remedy the shortfall. Deliverables not reviewed within the review period shall be deemed accepted.
+
+5. INTELLECTUAL PROPERTY
+
+Upon full payment of each milestone, all intellectual property rights in the deliverables for that milestone shall vest in the Client.
+
+6. CONFIDENTIALITY
+
+Both parties shall keep confidential all non-public information received from the other party during the term of this Agreement and for two years thereafter.
+
+7. TERMINATION
+
+Either party may terminate this Agreement with 15 days' written notice. Escrowed amounts for milestones already accepted shall be released to the Freelancer; escrowed amounts for milestones not yet started shall be refunded to the Client.
+
+8. DISPUTE RESOLUTION AND GOVERNING LAW
+
+This Agreement is governed by the laws of India. Any dispute shall first be referred to mediation, failing which it shall be resolved by arbitration under the Arbitration and Conciliation Act, 1996, with the seat of arbitration at Bengaluru.
+
+Signed:
+
+For Sharma Organics Private Limited          Arjun Mehta
+Priya Sharma, Director                        Freelancer
