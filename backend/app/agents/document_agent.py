@@ -371,9 +371,9 @@ def run(
                 extracted = _normalize_gemini(result, title)
                 details.update(engine="gemini", model=ctx.gemini.model)
             else:
-                details["fallback_reason"] = "gemini_returned_no_milestones"
+                details.update(fallback_reason="gemini_returned_no_milestones", gemini_model=ctx.gemini.model)
         except GeminiError as exc:
-            details["fallback_reason"] = str(exc)
+            details.update(fallback_reason=str(exc), gemini_model=ctx.gemini.model)
     elif not ctx.gemini.enabled:
         details["fallback_reason"] = "gemini_not_configured"
 

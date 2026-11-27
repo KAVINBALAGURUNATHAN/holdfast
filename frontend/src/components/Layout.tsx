@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import { api, API_BASE, APPROVALS_CHANGED, type Health } from "../api";
-import { IconShield } from "./ui";
+import { api, API_BASE, APPROVALS_CHANGED } from "../api";
+import { IconLock, IconShield } from "./ui";
 
-const INTEGRATIONS: { key: keyof Omit<Health, "ok">; label: string }[] = [
-  { key: "gemini", label: "Gemini" },
-  { key: "paypal", label: "PayPal" },
-  { key: "supabase", label: "Supabase" },
-  { key: "ocr", label: "OCR" },
-];
-
-function HealthChips() {
-  const [health, setHealth] = useState<Health | null>(null);
+function ApiOfflineNotice() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -19,11 +11,8 @@ function HealthChips() {
     const load = () =>
       api
         .health()
-        .then((h) => {
-          if (!cancelled) {
-            setHealth(h);
-            setError(false);
-          }
+        .then(() => {
+          if (!cancelled) setError(false);
         })
         .catch(() => {
           if (!cancelled) setError(true);
@@ -48,31 +37,8 @@ function HealthChips() {
     );
   }
 
-  return (
-    <ul className="flex flex-wrap items-center gap-1.5" aria-label="Integration status">
-      {INTEGRATIONS.map(({ key, label }) => {
-        const live = health ? health[key] : null;
-        const cls =
-          live === null
-            ? "bg-slate-100 text-slate-500 ring-slate-200"
-            : live
-              ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
-              : "bg-amber-50 text-amber-800 ring-amber-200";
-        const dot = live === null ? "bg-slate-300" : live ? "bg-emerald-500" : "bg-amber-500";
-        return (
-          <li
-            key={key}
-            className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${cls}`}
-            title={live === null ? "Checking…" : live ? `${label} is configured (live)` : `${label} not configured — using fallback`}
-          >
-            <span className={`h-1.5 w-1.5 rounded-full ${dot}`} />
-            {label}
-            <span className="font-normal opacity-75">{live === null ? "…" : live ? "live" : "fallback"}</span>
-          </li>
-        );
-      })}
-    </ul>
-  );
+  // The header only speaks up when the API is down.
+  return null;
 }
 
 function PendingCount() {
@@ -95,30 +61,39 @@ function PendingCount() {
   }, [location.pathname, location.key]);
   if (!count) return null;
   return (
-    <span className="ml-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-accent-600 px-1.5 text-[11px] font-semibold text-white">
+    <span className="ml-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-gold-500 px-1.5 text-[11px] font-semibold text-white">
       {count}
     </span>
   );
 }
 
 const navCls = ({ isActive }: { isActive: boolean }) =>
-  `inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-    isActive ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+  `relative inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+    isActive ? "bg-ink-900 text-paper" : "text-ink-600 hover:bg-ink-100 hover:text-ink-900"
   }`;
 
 export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-20 border-b border-ink-200/70 bg-paper/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:px-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center justify-between gap-4">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-700 text-white">
+          <div className="flex items-center justify-between gap-6">
+            <Link to="/" className="group flex items-center gap-2.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-800 text-paper shadow-sm transition-transform group-hover:-rotate-3">
                 <IconShield className="h-5 w-5" />
               </span>
-              <span className="text-lg font-semibold tracking-tight text-slate-900">HoldFast</span>
+              <span className="leading-none">
+                <span className="display block text-xl">HoldFast</span>
+                <span
+                  className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-ink-500"
+                  title="Sandbox payments only. AI verdicts are advisory — every money movement needs a human approval."
+                >
+                  <IconLock className="h-3 w-3" />
+                  Sandbox mode
+                </span>
+              </span>
             </Link>
-            <nav className="flex items-center gap-1">
+            <nav className="flex items-center gap-1" aria-label="Main">
               <NavLink to="/" end className={navCls}>
                 Contracts
               </NavLink>
@@ -128,23 +103,25 @@ export default function Layout() {
               </NavLink>
             </nav>
           </div>
-          <HealthChips />
-        </div>
-        <div className="border-t border-slate-100 bg-slate-50">
-          <p className="mx-auto max-w-6xl px-4 py-1.5 text-xs text-slate-500 sm:px-6">
-            <span className="font-medium text-slate-700">Sandbox payments only</span> · verdicts are advisory and every
-            money movement requires human approval.
-          </p>
+          <ApiOfflineNotice />
         </div>
       </header>
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
-        <Outlet />
+        <div className="animate-fade-up">
+          <Outlet />
+        </div>
       </main>
 
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-4 text-xs text-slate-500 sm:px-6">
-          HoldFast · auditable escrow for Indian freelancers &amp; MSMEs · API: <code className="break-all">{API_BASE}</code>
+      <footer className="border-t border-ink-200/70">
+        <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-6 text-xs text-ink-500 sm:flex-row sm:justify-between sm:px-6">
+          <span>
+            <span className="display text-sm text-ink-700">HoldFast</span> · auditable escrow for Indian freelancers &amp;
+            MSMEs
+          </span>
+          <span>
+            API <code className="break-all font-mono text-ink-600">{API_BASE}</code>
+          </span>
         </div>
       </footer>
     </div>

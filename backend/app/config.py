@@ -23,7 +23,10 @@ class Settings(BaseSettings):
 
     # Gemini
     gemini_api_key: str = ""
-    gemini_model: str = "gemini-2.5-flash"
+    gemini_model: str = "gemini-3.5-flash-lite"
+    # Per-attempt Gemini HTTP timeout (ms). One quick retry on 429/5xx fits within timeout + 5 s;
+    # after that the agents fall back to their heuristics.
+    gemini_timeout_ms: int = 20_000
 
     # PayPal (sandbox)
     paypal_client_id: str = ""
