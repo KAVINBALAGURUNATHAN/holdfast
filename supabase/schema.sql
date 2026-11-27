@@ -95,3 +95,13 @@ alter table submissions  enable row level security;
 alter table verdicts     enable row level security;
 alter table approvals    enable row level security;
 alter table audit_events enable row level security;
+
+-- Lock the tables to the server. The backend uses the service-role / secret key,
+-- which bypasses RLS; with RLS on and no policies, the public (anon/publishable)
+-- key cannot read or write anything.
+alter table contracts    enable row level security;
+alter table milestones   enable row level security;
+alter table submissions  enable row level security;
+alter table verdicts     enable row level security;
+alter table approvals    enable row level security;
+alter table audit_events enable row level security;

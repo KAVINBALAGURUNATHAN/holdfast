@@ -123,6 +123,14 @@ export class ApiError extends Error {
   }
 }
 
+/**
+ * True when the API answered 404 for something this page is showing. The default backend keeps data
+ * in memory, so this almost always means the server restarted after the page was loaded.
+ */
+export function isGoneError(e: unknown): boolean {
+  return e instanceof ApiError && e.status === 404;
+}
+
 function errorMessage(body: unknown, fallback: string): string {
   if (body && typeof body === "object" && "detail" in body) {
     const detail = (body as { detail: unknown }).detail;

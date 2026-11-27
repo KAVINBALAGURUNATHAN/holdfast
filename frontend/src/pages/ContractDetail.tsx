@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { api, formatDateTime, type Approval, type AuditEvent, type Contract, type Party } from "../api";
 import { useAsync, useReviewerName } from "../hooks";
@@ -8,6 +8,7 @@ import {
   ContractStatusBadge,
   EmptyState,
   ErrorBox,
+  GoneNotice,
   IconArrowLeft,
   IconChevron,
   IconDocument,
@@ -121,6 +122,28 @@ export default function ContractDetail() {
     setRefreshing(false);
   }, [contract, approvals, audit]);
 
+  // Re-check the contract when the tab regains focus: the in-memory backend may have restarted while
+  // this page sat open, and it is better to say so up front than to fail on the next button click.
+  const reloadContract = contract.reload;
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void reloadContract();
+    };
+    window.addEventListener("focus", onVisible);
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      window.removeEventListener("focus", onVisible);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [reloadContract]);
+
+  if (contract.errorStatus === 404)
+    return (
+      <div className="space-y-4">
+        <BackLink />
+        <GoneNotice />
+      </div>
+    );
   if (contract.loading && !contract.data) return <LoadingBlock label="Loading contract…" />;
   if (contract.error && !contract.data)
     return (

@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ApiError } from "./api";
 
 export interface AsyncState<T> {
   data: T | null;
   error: string | null;
+  /** HTTP status of the last failed load (0 = network error), or null. */
+  errorStatus: number | null;
   loading: boolean;
   reload: () => Promise<void>;
   setData: (updater: T | ((prev: T | null) => T)) => void;
@@ -12,6 +15,7 @@ export interface AsyncState<T> {
 export function useAsync<T>(fn: () => Promise<T>, deps: unknown[]): AsyncState<T> {
   const [data, setDataState] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [errorStatus, setErrorStatus] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const fnRef = useRef(fn);
   fnRef.current = fn;
@@ -21,11 +25,15 @@ export function useAsync<T>(fn: () => Promise<T>, deps: unknown[]): AsyncState<T
     const id = ++callId.current;
     setLoading(true);
     setError(null);
+    setErrorStatus(null);
     try {
       const result = await fnRef.current();
       if (id === callId.current) setDataState(result);
     } catch (e) {
-      if (id === callId.current) setError(e instanceof Error ? e.message : String(e));
+      if (id === callId.current) {
+        setError(e instanceof Error ? e.message : String(e));
+        setErrorStatus(e instanceof ApiError ? e.status : null);
+      }
     } finally {
       if (id === callId.current) setLoading(false);
     }
@@ -40,7 +48,7 @@ export function useAsync<T>(fn: () => Promise<T>, deps: unknown[]): AsyncState<T
     setDataState((prev) => (typeof updater === "function" ? (updater as (p: T | null) => T)(prev) : updater));
   }, []);
 
-  return { data, error, loading, reload, setData };
+  return { data, error, errorStatus, loading, reload, setData };
 }
 
 const REVIEWER_KEY = "holdfast.reviewer";

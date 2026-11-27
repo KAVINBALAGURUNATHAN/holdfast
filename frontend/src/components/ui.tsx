@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import type { ApprovalAction, ApprovalStatus, ContractStatus, MilestoneStatus, VerdictDecision } from "../api";
 
 // ---------- Badges ----------
@@ -297,6 +298,23 @@ export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () =
           Retry
         </button>
       )}
+    </div>
+  );
+}
+
+/** Shown when the server no longer has the contract this page is showing (e.g. after a restart). */
+export function GoneNotice({ what = "This contract" }: { what?: string }) {
+  return (
+    <div
+      className="flex flex-col gap-3 rounded-xl border border-rose-200 bg-rose-50/70 p-4 text-sm text-rose-800 sm:flex-row sm:items-center sm:justify-between"
+      role="alert"
+    >
+      <span className="break-words">
+        {what} is no longer on the server (it may have restarted). Upload it again.
+      </span>
+      <Link to="/" className="btn-secondary btn-sm shrink-0">
+        Go to Contracts
+      </Link>
     </div>
   );
 }

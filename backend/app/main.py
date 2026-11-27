@@ -24,6 +24,9 @@ def create_app(settings: Optional[Settings] = None, store: Optional[Repository] 
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origin_list or ["*"],
+        # Local dev servers on any port, whether opened as localhost or 127.0.0.1 (Vite moves to the
+        # next free port when 5173 is taken, which would otherwise fail every API call with a CORS error).
+        allow_origin_regex=r"http://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?",
         allow_credentials=False,
         allow_methods=["*"],
         allow_headers=["*"],

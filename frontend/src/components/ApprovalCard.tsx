@@ -1,9 +1,10 @@
 import { useState, type ReactNode } from "react";
-import { api, formatDateTime, notifyApprovalsChanged, type Approval } from "../api";
+import { api, formatDateTime, isGoneError, notifyApprovalsChanged, type Approval } from "../api";
 import {
   ActionBadge,
   ApprovalStatusBadge,
   ErrorBox,
+  GoneNotice,
   IconCheck,
   IconClock,
   IconSparkle,
@@ -34,6 +35,7 @@ function agentLabel(agent: string): string {
 export default function ApprovalCard({ approval, reviewer, context, onDecided }: Props) {
   const [busy, setBusy] = useState<"approved" | "denied" | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [gone, setGone] = useState(false);
 
   const decide = async (decision: "approved" | "denied") => {
     setBusy(decision);
@@ -43,7 +45,8 @@ export default function ApprovalCard({ approval, reviewer, context, onDecided }:
       notifyApprovalsChanged();
       onDecided(updated);
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      if (isGoneError(e)) setGone(true);
+      else setError(e instanceof Error ? e.message : String(e));
     } finally {
       setBusy(null);
     }
@@ -161,6 +164,11 @@ export default function ApprovalCard({ approval, reviewer, context, onDecided }:
           </div>
         )}
 
+        {gone && (
+          <div className="mt-3">
+            <GoneNotice what="This approval" />
+          </div>
+        )}
         {error && (
           <div className="mt-3">
             <ErrorBox message={error} />

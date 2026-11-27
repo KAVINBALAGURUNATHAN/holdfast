@@ -3,6 +3,7 @@ import {
   api,
   formatDate,
   formatDateTime,
+  isGoneError,
   isSimulatedOrder,
   notifyApprovalsChanged,
   type Approval,
@@ -14,6 +15,7 @@ import VerdictCard from "./VerdictCard";
 import {
   ErrorBox,
   EscrowTimeline,
+  GoneNotice,
   IconCheck,
   IconClock,
   IconDocument,
@@ -45,6 +47,8 @@ function isOverdue(m: Milestone): boolean {
 
 export default function MilestoneCard({ milestone: m, currency, approvals, reviewer, onChanged }: Props) {
   const [error, setError] = useState<string | null>(null);
+  // Set when the server answers 404 for this milestone (in-memory backend restarted since page load).
+  const [gone, setGone] = useState(false);
   const [busy, setBusy] = useState<"fund" | "capture" | "submit" | null>(null);
   const [paypal, setPaypal] = useState<{ orderId: string; url: string } | null>(null);
 
@@ -56,6 +60,17 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
   const [submissions, setSubmissions] = useState<Submission[] | null>(null);
   const [subsError, setSubsError] = useState<string | null>(null);
   const [showHistory, setShowHistory] = useState(false);
+
+  const fail = (e: unknown) => {
+    if (isGoneError(e)) {
+      setGone(true);
+      setError(null);
+      setPaypal(null);
+      onChanged(); // re-fetch the contract so the whole page reflects that it is gone
+    } else {
+      setError(e instanceof Error ? e.message : String(e));
+    }
+  };
 
   // Load submission history (and latest verdict) once the milestone has any.
   useEffect(() => {
@@ -69,7 +84,11 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
           setSubsError(null);
         }
       })
-      .catch((e: unknown) => !cancelled && setSubsError(e instanceof Error ? e.message : String(e)));
+      .catch((e: unknown) => {
+        if (cancelled) return;
+        if (isGoneError(e)) setGone(true);
+        else setSubsError(e instanceof Error ? e.message : String(e));
+      });
     return () => {
       cancelled = true;
     };
@@ -95,7 +114,7 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
         onChanged();
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      fail(e);
     } finally {
       setBusy(null);
     }
@@ -110,7 +129,7 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
       setPaypal(null);
       onChanged();
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      fail(e);
     } finally {
       setBusy(null);
     }
@@ -134,7 +153,7 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
       notifyApprovalsChanged();
       onChanged();
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      fail(e);
     } finally {
       setBusy(null);
     }
@@ -230,7 +249,9 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
 
       {/* Actions */}
       <div className="space-y-4 border-t border-ink-100 bg-paper-2/40 px-4 py-4 sm:px-6 sm:py-5">
-        {m.status === "pending" && !awaitingOrder && (
+        {gone && <GoneNotice />}
+
+        {!gone && m.status === "pending" && !awaitingOrder && (
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex min-w-0 items-start gap-3">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-accent-700 ring-1 ring-inset ring-ink-200">
@@ -258,7 +279,7 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
           </div>
         )}
 
-        {m.status === "pending" && awaitingOrder && (
+        {!gone && m.status === "pending" && awaitingOrder && (
           <div className="rounded-xl border border-accent-200 bg-accent-50/70 p-4">
             <p className="text-sm font-medium text-accent-800">Approve the payment in the PayPal sandbox window</p>
             <p className="mt-1 text-sm text-ink-600">
@@ -283,7 +304,7 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
           </div>
         )}
 
-        {SUBMITTABLE.includes(m.status) && !showForm && (
+        {!gone && SUBMITTABLE.includes(m.status) && !showForm && (
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex min-w-0 items-start gap-3">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-accent-700 ring-1 ring-inset ring-ink-200">
@@ -307,7 +328,7 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
           </div>
         )}
 
-        {showForm && (
+        {!gone && showForm && (
           <form onSubmit={submit} className="space-y-4 rounded-xl border border-ink-200/70 bg-white p-4 shadow-soft sm:p-5">
             <div>
               <p className="display text-lg">Submit deliverable</p>
