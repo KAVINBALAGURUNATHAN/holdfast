@@ -116,6 +116,25 @@ Create a sandbox app at developer.paypal.com and set `PAYPAL_CLIENT_ID` and `PAY
 - Every decision is written to `audit_events`, along with the engine that produced it (Gemini or heuristic, live or simulated).
 - Verdicts include quoted evidence per criterion. When the evidence is insufficient, the verdict is `needs_review` instead of a guess.
 
+## Evaluation
+
+There is an offline, reproducible evaluation in [`backend/eval/`](backend/eval/). Full method, confusion matrices and limitations are in [`backend/eval/RESULTS.md`](backend/eval/RESULTS.md). **All data is synthetic and labelled by the author, the sample is small, and the numbers come from a single run**, using `gemini-3.5-flash-lite`.
+
+| | Gemini | Heuristic fallback |
+|---|---|---|
+| Contracts fully correct (parties, milestone count, every amount, due date and criteria count); N=24 | 23/24 (95.8%) | 10/24 (41.7%) |
+| Milestone amounts exact; N=62 | 62/62 | 56/62 |
+| Referee criterion accuracy; N=41 | 37/41 (90.2%) | 32/41 (78.0%) |
+| Unproven or unmet criteria wrongly marked met; N=17 | 1/17 | 3/17 |
+| Unsafe approvals (approve when gold isn't approve); N=12 | 1/12 | 2/12 |
+| Referee decision accuracy; N=17 | 11/17 (64.7%) | 5/17 (29.4%) |
+
+- **Gemini latency:** median 1.8 s per call, p95 2.9 s (N=41).
+- **Rate limits:** without client-side pacing, 10 of 41 calls hit HTTP 429 and fell back to the heuristic.
+- **Referee decision misses (6 of 17):** 3 sent fully evidenced work to human review, 2 rejected where review was expected, and 1 approved a milestone whose "no vulnerabilities" criterion was only claimed, never shown.
+
+Reproduce from `backend/`: `.venv\Scripts\python -m eval.run_eval --pace-s 8`
+
 ## Impact
 
 HoldFast aims to cut milestone dispute resolution from weeks to minutes for MSMEs and freelancers, with a transparent record both sides can trust.

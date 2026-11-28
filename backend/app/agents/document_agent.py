@@ -56,6 +56,11 @@ KV_RE = re.compile(r"^\s*([A-Za-z][A-Za-z /]{1,30})\s*:\s*(.*)$")
 
 CLIENT_ROLES = r"client|buyer|customer|company|hirer|employer"
 FREELANCER_ROLES = r"freelancer|service provider|developer|contractor|consultant|vendor|designer"
+# Extra line labels accepted only by the heuristic party extractor (not used to map Gemini roles).
+_HEURISTIC_CLIENT_ROLES = CLIENT_ROLES + r"|publisher|brand"
+_HEURISTIC_FREELANCER_ROLES = (
+    FREELANCER_ROLES + r"|writer|ghostwriter|editor|translator|illustrator|animator|producer|campaign manager|agency"
+)
 
 
 def parse_date(text: str) -> Optional[str]:
@@ -98,6 +103,8 @@ def parse_amount(text: str) -> Optional[float]:
 
 
 def _clean_name(raw: str) -> str:
+    # Drop "(Retd.)"-style title suffixes first so "Col. (Retd.) R. S. Rathore" isn't cut at the "(".
+    raw = re.sub(r"\s*\((?:retd|retired)\.?\)", "", raw, flags=re.I)
     name = re.split(r",|\s\(|;|\s-\s", raw.strip(), maxsplit=1)[0]
     return name.strip(" .*:\t")
 
@@ -105,7 +112,7 @@ def _clean_name(raw: str) -> str:
 def _extract_parties(text: str) -> list[Party]:
     lines = text.splitlines()
     parties: list[Party] = []
-    for role, pattern in (("client", CLIENT_ROLES), ("freelancer", FREELANCER_ROLES)):
+    for role, pattern in (("client", _HEURISTIC_CLIENT_ROLES), ("freelancer", _HEURISTIC_FREELANCER_ROLES)):
         line_re = re.compile(rf"^\s*(?:\*\*)?(?:the\s+)?(?:{pattern})(?:\*\*)?\s*:\s*(.+)$", re.I)
         email_re = re.compile(rf"^\s*(?:{pattern})\s*(?:'s)?\s*e-?mail\s*:\s*(\S+)", re.I)
         name = None

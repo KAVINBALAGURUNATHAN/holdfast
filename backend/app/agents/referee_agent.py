@@ -32,6 +32,8 @@ _NEGATION_RE = re.compile(
     r"\b(not|isn't|aren't|wasn't|won't|cannot|can't|pending|todo|to-do|tbd|incomplete|missing|yet to|partially|unable|failed|blocked)\b",
     re.I,
 )
+# "0 failed" / "zero errors" report success; strip them before the negation check.
+_ZERO_COUNT_RE = re.compile(r"\b(?:0|zero)\s+(?:failed|failures?|errors?|pending|missing)\b", re.I)
 MET_THRESHOLD = 0.6
 
 
@@ -74,7 +76,7 @@ def heuristic_referee(criteria: list[str], submission_text: str) -> dict[str, An
             if hits > best_hits:
                 best, best_hits = s, hits
         met = overlap >= MET_THRESHOLD and best_hits > 0
-        if best and _NEGATION_RE.search(best):
+        if best and _NEGATION_RE.search(_ZERO_COUNT_RE.sub(" ", best)):
             met = False
             evidence = f'Submission suggests this is incomplete: "{best[:300]}"'
             overlap *= 0.5
