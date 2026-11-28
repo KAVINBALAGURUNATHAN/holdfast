@@ -9,12 +9,14 @@ all ids are prefixed with `SIM-`.
 from __future__ import annotations
 
 import logging
+import math
 import threading
 import time
 import uuid
 from dataclasses import dataclass
+from decimal import ROUND_HALF_UP, Decimal
 from typing import Optional
-from urllib.parse import urlencode
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import httpx
 
@@ -25,6 +27,19 @@ log = logging.getLogger("holdfast.paypal")
 
 class PayPalError(Exception):
     pass
+
+
+# Plain-language hints for the PayPal issues a HoldFast user can actually hit.
+_ISSUE_HINTS = {
+    "ORDER_NOT_APPROVED": "The buyer has not approved this order in PayPal yet.",
+    "ORDER_ALREADY_AUTHORIZED": "This order is already authorized.",
+    "ORDER_EXPIRED": "This PayPal order expired; start a new order.",
+    "AUTHORIZATION_EXPIRED": "The escrow authorization has expired.",
+    "AUTHORIZATION_VOIDED": "The escrow authorization was already voided.",
+    "AUTHORIZATION_ALREADY_CAPTURED": "The escrow authorization was already captured.",
+    "PAYER_ACTION_REQUIRED": "The buyer still needs to approve the payment in PayPal.",
+    "INSTRUMENT_DECLINED": "PayPal declined the buyer's payment method.",
+}
 
 
 @dataclass
@@ -43,9 +58,26 @@ class EscrowResult:
 
 
 def inr_to_usd(amount_inr: float, inr_per_usd: float) -> str:
-    rate = inr_per_usd if inr_per_usd > 0 else 83.0
-    usd = max(round(float(amount_inr) / rate, 2), 0.01)
-    return f"{usd:.2f}"
+    """Convert INR to a PayPal-valid USD value string: 2 decimals, >= 0.01."""
+    rate = inr_per_usd if inr_per_usd and math.isfinite(inr_per_usd) and inr_per_usd > 0 else 83.0
+    amount = float(amount_inr)
+    if not math.isfinite(amount) or amount <= 0:
+        raise PayPalError("Escrow amount must be a positive number.")
+    usd = (Decimal(str(amount)) / Decimal(str(rate))).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    return f"{max(usd, Decimal('0.01')):.2f}"
+
+
+def with_query(base_url: str, **params: Optional[str]) -> str:
+    """Return base_url with params merged into its query string (existing keys are replaced).
+
+    Used to make PayPal's return/cancel URLs carry the milestone (and contract) so the
+    frontend return page knows what to fund. PayPal appends its own token & PayerID.
+    """
+    parts = urlsplit(base_url)
+    extra = {k: v for k, v in params.items() if v}
+    query = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True) if k not in extra]
+    query.extend(extra.items())
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
 
 
 class PayPalService:
@@ -69,13 +101,16 @@ class PayPalService:
         with self._lock:
             if self._token and time.time() < self._token_expiry - 60:
                 return self._token
-            with self._client() as c:
-                resp = c.post(
-                    "/v1/oauth2/token",
-                    data={"grant_type": "client_credentials"},
-                    auth=(self.settings.paypal_client_id, self.settings.paypal_client_secret),
-                    headers={"Accept": "application/json"},
-                )
+            try:
+                with self._client() as c:
+                    resp = c.post(
+                        "/v1/oauth2/token",
+                        data={"grant_type": "client_credentials"},
+                        auth=(self.settings.paypal_client_id, self.settings.paypal_client_secret),
+                        headers={"Accept": "application/json"},
+                    )
+            except httpx.HTTPError as exc:
+                raise PayPalError(f"Could not reach PayPal ({type(exc).__name__})") from exc
             if resp.status_code != 200:
                 raise PayPalError(f"PayPal OAuth failed (HTTP {resp.status_code})")
             body = resp.json()
@@ -91,8 +126,11 @@ class PayPalService:
         }
         if idempotency_key:
             headers["PayPal-Request-Id"] = idempotency_key
-        with self._client() as c:
-            resp = c.post(path, json=json_body if json_body is not None else {}, headers=headers)
+        try:
+            with self._client() as c:
+                resp = c.post(path, json=json_body if json_body is not None else {}, headers=headers)
+        except httpx.HTTPError as exc:
+            raise PayPalError(f"Could not reach PayPal for {path} ({type(exc).__name__})") from exc
         if resp.status_code >= 400:
             debug_id = resp.headers.get("PayPal-Debug-Id", "")
             issue = ""
@@ -101,17 +139,26 @@ class PayPalService:
                 issue = details[0].get("issue", "") if details else resp.json().get("name", "")
             except Exception:
                 pass
-            raise PayPalError(f"PayPal {path} failed (HTTP {resp.status_code} {issue} debug_id={debug_id})".strip())
+            hint = _ISSUE_HINTS.get(issue, "")
+            msg = f"PayPal {path} failed (HTTP {resp.status_code} {issue} debug_id={debug_id})"
+            raise PayPalError(f"{hint} {msg}".strip() if hint else msg)
         return resp
 
     # ---- Escrow operations ----
-    def create_order(self, *, milestone_id: str, description: str, amount_inr: float) -> OrderResult:
+    def redirect_urls(self, milestone_id: str, contract_id: Optional[str] = None) -> tuple[str, str]:
+        """Per-order (return_url, cancel_url) that identify the milestone being funded."""
+        params = {"milestone_id": milestone_id, "contract_id": contract_id}
+        return (with_query(self.settings.paypal_return_url, **params),
+                with_query(self.settings.paypal_cancel_url, **params))
+
+    def create_order(self, *, milestone_id: str, description: str, amount_inr: float,
+                     contract_id: Optional[str] = None) -> OrderResult:
         amount_usd = inr_to_usd(amount_inr, self.settings.inr_per_usd)
+        return_url, cancel_url = self.redirect_urls(milestone_id, contract_id)
         if not self.enabled:
+            # Mirror what PayPal does after approval: redirect to return_url with ?token=<order id>.
             order_id = f"SIM-ORDER-{uuid.uuid4().hex[:16].upper()}"
-            qs = urlencode({"token": order_id, "simulated": "true", "milestone_id": milestone_id})
-            sep = "&" if "?" in self.settings.paypal_return_url else "?"
-            return OrderResult(order_id, f"{self.settings.paypal_return_url}{sep}{qs}", amount_usd, True)
+            return OrderResult(order_id, with_query(return_url, token=order_id, simulated="true"), amount_usd, True)
 
         body = {
             "intent": "AUTHORIZE",
@@ -125,8 +172,8 @@ class PayPalService:
                 "brand_name": "HoldFast",
                 "user_action": "PAY_NOW",
                 "shipping_preference": "NO_SHIPPING",
-                "return_url": self.settings.paypal_return_url,
-                "cancel_url": self.settings.paypal_cancel_url,
+                "return_url": return_url,
+                "cancel_url": cancel_url,
             }}},
         }
         data = self._post("/v2/checkout/orders", body, idempotency_key=f"order-{milestone_id}-{uuid.uuid4().hex[:8]}").json()

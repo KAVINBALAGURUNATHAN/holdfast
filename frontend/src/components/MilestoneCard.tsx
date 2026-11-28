@@ -283,8 +283,9 @@ export default function MilestoneCard({ milestone: m, currency, approvals, revie
           <div className="rounded-xl border border-accent-200 bg-accent-50/70 p-4">
             <p className="text-sm font-medium text-accent-800">Approve the payment in the PayPal sandbox window</p>
             <p className="mt-1 text-sm text-ink-600">
-              Order <code className="break-all font-mono text-xs text-ink-800">{awaitingOrder}</code>. Once you have
-              approved it in PayPal, confirm below to authorize the escrow hold.
+              Order <code className="break-all font-mono text-xs text-ink-800">{awaitingOrder}</code>. After you approve it,
+              PayPal returns you to HoldFast and the escrow is funded automatically. If that tab was closed, confirm
+              below to authorize the escrow hold.
             </p>
             <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
               <button type="button" className="btn-primary" disabled={busy !== null} onClick={() => void capture()}>

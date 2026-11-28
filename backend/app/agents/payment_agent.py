@@ -44,6 +44,7 @@ def create_funding_order(ctx: AppContext, contract: Contract, milestone: Milesto
             milestone_id=milestone.id,
             description=f"{contract.title} - {milestone.title}",
             amount_inr=milestone.amount,
+            contract_id=contract.id,
         )
     except PayPalError as exc:
         audit.record(ctx.store, contract_id=contract.id, milestone_id=milestone.id, actor=ACTOR,
@@ -61,7 +62,8 @@ def create_funding_order(ctx: AppContext, contract: Contract, milestone: Milesto
 
 def capture_funding(ctx: AppContext, contract: Contract, milestone: Milestone, order_id: str) -> Milestone:
     if not milestone.escrow_order_id or order_id != milestone.escrow_order_id:
-        raise PaymentAgentError("order_id does not match this milestone's escrow order.", 400)
+        raise PaymentAgentError("This PayPal order is not the current escrow order for this milestone "
+                                "(a newer order may have been started). Fund the milestone again.", 400)
     if milestone.escrow_authorization_id:
         return milestone  # idempotent: already authorized
     try:
