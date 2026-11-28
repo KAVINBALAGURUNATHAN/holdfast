@@ -1,0 +1,27 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+SOCIAL MEDIA MARKETING SERVICES CONTRACT
+
+This contract is between Bloom Boutique, a women's clothing store in Koramangala, Bengaluru, owned by Mrs. Kavita Iyer (the "Client"), and Pixel Pundit Digital, a sole proprietorship of Aditya Verma (the "Agency").
+
+Client: Bloom Boutique (Mrs. Kavita Iyer, Proprietor)
+Service Provider: Pixel Pundit Digital (Aditya Verma)
+
+Ad budget: The Client will separately spend up to ₹1,00,000 on Meta ads, paid directly to Meta from the Client's own card. This ad budget is not part of the Agency's fee.
+
+Milestone 1 — Strategy and Content Calendar
+Amount: ₹ 60,000
+Due: March 1, 2027
+Acceptance Criteria:
+- A written social media strategy covering Instagram and Facebook is delivered
+- A content calendar for 8 weeks with at least 24 planned posts is delivered
+- Brand tone-of-voice guidelines are included
+
+Milestone 2 — Campaign Execution and Report
+Amount: ₹ 40,000
+Due: 31st March 2027
+Acceptance Criteria:
+- At least 24 posts and 8 reels are published on the Client's accounts
+- A performance report with reach, engagement rate and follower growth is shared
+
+Either party may terminate with 15 days' written notice.

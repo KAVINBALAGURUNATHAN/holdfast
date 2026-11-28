@@ -1,0 +1,22 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+QUOTATION AND WORK ORDER - SHOPIFY STORE SETUP
+
+To: Ms. Ishita Banerjee, Founder, Kolkata Kantha Collective, Kolkata
+From: Arnab Ghosh, freelance Shopify developer, Salt Lake, Kolkata
+
+Client: Kolkata Kantha Collective (Ishita Banerjee)
+Developer: Arnab Ghosh
+
+Thank you for choosing me for your online store. This work order covers a single fixed-price delivery.
+
+Project fee: Rs. 55,000 (fixed), payable in full from escrow on acceptance.
+Delivery date: 2027-01-20
+
+Deliverables:
+- Shopify store set up on the Client's domain with a customised theme
+- 60 products uploaded with photos, prices and variants
+- Razorpay and cash-on-delivery enabled at checkout
+- Shiprocket integrated for shipping labels
+
+Any additional products beyond 60 will be uploaded at Rs. 50 per product. Shopify subscription and app fees are paid by the Client directly.

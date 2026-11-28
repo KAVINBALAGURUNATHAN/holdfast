@@ -1,0 +1,27 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+AGREEMENT FOR TRANSLATION OF LEGAL DOCUMENTS
+
+This agreement is made between Adv. Prakash Patil of Patil & Associates, Advocates, Nashik (the Client) and Smt. Sunanda Gokhale, certified English-Marathi translator, Thane (the Translator).
+
+Client: Patil & Associates (Adv. Prakash Patil)
+Translator: Sunanda Gokhale
+
+Work: translation of a 140-page land dispute case file from English into Marathi, in two parts.
+
+Milestone 1: Part A (pages 1 to 70)
+Amount: Rs. 18,500
+Due: within 15 days of receipt of the source files
+Acceptance Criteria:
+- Pages 1 to 70 are translated into Marathi in Devanagari script
+- Legal terms follow the Maharashtra government's official Marathi glossary
+
+Milestone 2: Part B (pages 71 to 140) and Certification
+Amount: Rs. 18,500
+Due: 28/02/2027
+Acceptance Criteria:
+- Pages 71 to 140 are translated into Marathi in Devanagari script
+- A signed translator's certificate of accuracy is attached
+- Both parts are delivered as one combined PDF
+
+Urgent same-day pages, if requested, are charged at Rs. 400 per page and are outside these milestones.

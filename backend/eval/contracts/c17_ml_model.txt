@@ -1,0 +1,36 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+MACHINE LEARNING DEVELOPMENT CONTRACT
+
+Client: KrishiSense Agritech Pvt. Ltd., Nagpur (contact: Mr. Vivek Thakre, CTO)
+Contractor: Dr. Kiran Reddy, independent ML engineer, Hyderabad
+
+Project: a model that detects common leaf diseases in cotton and soybean crops from farmer smartphone photos.
+
+| Milestone | Deliverable | Amount | Due date |
+|---|---|---|---|
+| 1 | Data audit and labelling plan | Rs 80,000 | 2027-01-08 |
+| 2 | Baseline model | Rs 1,20,000 | 2027-02-12 |
+| 3 | Production model and API | Rs 1,60,000 | 2027-03-26 |
+| 4 | Documentation and handover | Rs 40,000 | 2027-04-09 |
+
+Acceptance criteria per milestone
+
+Milestone 1: Data audit and labelling plan
+- Audit report on the Client's 25,000 images with class counts and quality issues
+- Labelling guidelines agreed with the Client's agronomists
+
+Milestone 2: Baseline model
+- Baseline classifier reaches at least 80% macro F1 on the held-out test set
+- Training code is reproducible from a single command
+
+Milestone 3: Production model and API
+- Model reaches at least 88% macro F1 on the held-out test set
+- Inference API responds in under 500 ms per image on the Client's server
+- Model runs offline on a mid-range Android phone (TensorFlow Lite)
+
+Milestone 4: Documentation and handover
+- Model card describing data, metrics and known limitations
+- Handover session with the Client's engineering team
+
+Compute: GPU cloud costs of up to Rs 30,000 will be reimbursed by the Client at actuals; this is not part of any milestone.

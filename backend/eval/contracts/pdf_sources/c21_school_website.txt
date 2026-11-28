@@ -1,0 +1,36 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+WEBSITE DEVELOPMENT AGREEMENT
+
+Client: Sri Vidya Mandir School Trust, Mysuru, represented by its Secretary Mrs. Sharada Prasad
+Developer: Manjunath Hegde, freelance web developer, Mangaluru
+
+1. SCOPE
+The Developer will build a new school website with an admissions enquiry form, an events calendar and a parent notice board.
+
+2. MILESTONES
+
+Milestone 1: Design
+Amount: Rs. 60,000
+Due Date: 15/01/2027
+Acceptance Criteria:
+- Home, admissions, academics, events and contact page designs are approved
+- Designs are available in Kannada and English
+
+Milestone 2: Development
+Amount: Rs. 90,000
+Due Date: 26/02/2027
+Acceptance Criteria:
+- Admissions enquiry form emails the school office and stores entries in a spreadsheet
+- Staff can add events to the calendar without developer help
+- Notice board posts can be restricted to logged-in parents
+
+Milestone 3: Launch
+Amount: Rs. 50,000
+Due Date: 12/03/2027
+Acceptance Criteria:
+- Website is live on the school domain with HTTPS
+- Two staff members are trained to update content
+
+3. HOSTING
+Annual hosting of Rs. 6,000 is billed separately by the hosting provider.

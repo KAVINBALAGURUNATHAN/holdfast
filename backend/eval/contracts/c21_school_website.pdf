@@ -1,0 +1,70 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 1529 >>
+stream
+BT /F1 10 Tf 14 TL 50 792 Td
+([SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]) Tj T*
+() Tj T*
+(WEBSITE DEVELOPMENT AGREEMENT) Tj T*
+() Tj T*
+(Client: Sri Vidya Mandir School Trust, Mysuru, represented by its Secretary Mrs. Sharada Prasad) Tj T*
+(Developer: Manjunath Hegde, freelance web developer, Mangaluru) Tj T*
+() Tj T*
+(1. SCOPE) Tj T*
+(The Developer will build a new school website with an admissions enquiry form, an events) Tj T*
+(calendar and a parent notice board.) Tj T*
+() Tj T*
+(2. MILESTONES) Tj T*
+() Tj T*
+(Milestone 1: Design) Tj T*
+(Amount: Rs. 60,000) Tj T*
+(Due Date: 15/01/2027) Tj T*
+(Acceptance Criteria:) Tj T*
+(- Home, admissions, academics, events and contact page designs are approved) Tj T*
+(- Designs are available in Kannada and English) Tj T*
+() Tj T*
+(Milestone 2: Development) Tj T*
+(Amount: Rs. 90,000) Tj T*
+(Due Date: 26/02/2027) Tj T*
+(Acceptance Criteria:) Tj T*
+(- Admissions enquiry form emails the school office and stores entries in a spreadsheet) Tj T*
+(- Staff can add events to the calendar without developer help) Tj T*
+(- Notice board posts can be restricted to logged-in parents) Tj T*
+() Tj T*
+(Milestone 3: Launch) Tj T*
+(Amount: Rs. 50,000) Tj T*
+(Due Date: 12/03/2027) Tj T*
+(Acceptance Criteria:) Tj T*
+(- Website is live on the school domain with HTTPS) Tj T*
+(- Two staff members are trained to update content) Tj T*
+() Tj T*
+(3. HOSTING) Tj T*
+(Annual hosting of Rs. 6,000 is billed separately by the hosting provider.) Tj T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000338 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1919
+%%EOF

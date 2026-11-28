@@ -1,0 +1,28 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+CONSULTING ENGAGEMENT AGREEMENT
+
+Engagement date: 5 December 2026
+
+Client: Tirupur Knits Exports Pvt Ltd, Tirupur, Tamil Nadu
+Consultant: CA Ramesh Subramanian, Chartered Accountant, Coimbatore
+
+Purpose: Review of the Client's GST compliance for FY 2025-26 and setting up a monthly compliance process.
+
+Milestone 1: GST Compliance Review
+Amount: Rs. 1.5 lakh
+Due Date: 2027-02-01
+Acceptance Criteria:
+- Reconciliation of GSTR-1, GSTR-3B and GSTR-2B for all 12 months of FY 2025-26
+- A written report listing every mismatch with the estimated tax impact
+- A meeting to walk the Client's finance team through the findings
+
+Milestone 2: Compliance Process Setup
+Amount: Rs. 2 lakhs
+Due Date: 2027-03-15
+Acceptance Criteria:
+- A monthly GST compliance checklist is documented
+- Two finance staff are trained on the checklist
+- An e-invoicing workflow is configured and tested on 10 sample invoices
+
+Out-of-pocket travel expenses up to Rs. 10,000 will be reimbursed at actuals against bills.

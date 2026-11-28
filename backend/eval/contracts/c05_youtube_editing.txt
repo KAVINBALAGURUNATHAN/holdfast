@@ -1,0 +1,36 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+VIDEO EDITING AGREEMENT
+
+Between: Vikram Malhotra, YouTube creator (channel "Vikram Explores"), New Delhi, the Client
+And: Nikhil Joshi, freelance video editor, Indore, the Editor
+
+Client: Vikram Malhotra
+Editor: Nikhil Joshi
+
+The Editor will edit travel vlog episodes from raw footage supplied by the Client via Google Drive.
+
+Milestone 1: Episodes 1 and 2
+Amount: Rs.8,000
+Due Date: 05/01/2027
+Acceptance Criteria:
+* Two edited episodes, each 12 to 15 minutes long, exported in 4K
+* Background music is royalty-free and the licence details are listed
+* English subtitles are burned in
+
+Milestone 2: Episodes 3 and 4
+Amount: Rs.8,000
+Due Date: 19/01/2027
+Acceptance Criteria:
+* Two edited episodes, each 12 to 15 minutes long, exported in 4K
+* English subtitles are burned in
+
+Milestone 3: Channel Trailer and Thumbnails
+Amount: Rs.10,500
+Due Date: 02/02/2027
+Acceptance Criteria:
+* A 60-second channel trailer is delivered
+* Custom thumbnails (1280x720) are delivered for all four episodes
+* Project files are shared so the Client can re-export
+
+Extra revisions beyond two per episode will be charged at Rs.750 per revision.

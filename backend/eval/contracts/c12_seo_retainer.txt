@@ -1,0 +1,25 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+SEO SERVICES AGREEMENT (THREE-MONTH ENGAGEMENT)
+
+Client: Annapurna Home Foods, Jaipur, a proprietorship of Shri Gopal Agarwal
+Consultant: Neha Bansal, SEO consultant, Noida
+
+This three-month engagement is split into monthly milestones. The fee for each month is INR 35,000, released after the Client confirms that month's deliverables.
+
+Milestone 1: Month 1 - Audit and Fixes
+Amount: INR 35,000
+Due Date: 31/01/2027
+Acceptance Criteria: A technical SEO audit of the website is delivered as a report. All critical issues identified in the audit, such as broken links and missing meta tags, are fixed on the live site.
+
+Milestone 2: Month 2 - Keyword Strategy and Content
+Amount: INR 35,000
+Due Date: 28/02/2027
+Acceptance Criteria: A keyword map covering at least 50 target keywords is delivered. Six optimised product category pages are published.
+
+Milestone 3: Month 3 - Links and Reporting
+Amount: INR 35,000
+Due Date: 31/03/2027
+Acceptance Criteria: At least 15 backlinks from relevant Indian food or lifestyle websites are acquired. A final report compares organic traffic and keyword rankings with the baseline from Month 1.
+
+Total fee for the engagement: INR 1,05,000.

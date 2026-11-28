@@ -1,0 +1,32 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+SUBTITLE TRANSLATION AGREEMENT
+
+Client: Neelkamal Pictures, Hyderabad, represented by its producer Mr. Srinivas Rao Chowdary
+Translator: Meenakshi Sundaram, subtitle translator, Madurai
+
+The Translator will prepare subtitles for the Telugu feature film "Godavari Express" (running time 2 hours 18 minutes) in three languages. Each language is a separate milestone at Rs. 21,000 per language.
+
+Milestone 1: Tamil Subtitles
+Amount: Rs. 21,000
+Due Date: 12/01/2027
+Acceptance Criteria:
+- Complete Tamil subtitles delivered as an SRT file synced to the final cut
+- No subtitle line exceeds 42 characters
+
+Milestone 2: English Subtitles
+Amount: Rs. 21,000
+Due Date: 2027-01-26
+Acceptance Criteria:
+- Complete English subtitles delivered as an SRT file synced to the final cut
+- No subtitle line exceeds 42 characters
+- Song lyrics are translated, not left untranslated
+
+Milestone 3: Hindi Subtitles
+Amount: Rs. 21,000
+Due Date: 9 February 2027
+Acceptance Criteria:
+- Complete Hindi subtitles delivered as an SRT file synced to the final cut
+- No subtitle line exceeds 42 characters
+
+The total fee is Rs. 63,000. A festival-screening version, if needed, will be quoted separately.

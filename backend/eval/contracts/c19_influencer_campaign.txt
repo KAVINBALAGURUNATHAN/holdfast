@@ -1,0 +1,31 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+INFLUENCER CAMPAIGN MANAGEMENT AGREEMENT
+
+Brand: Glowroot Naturals Private Limited, Bengaluru ("the Client")
+Campaign Manager: Rahul Khanna, freelance influencer-marketing manager, Mumbai ("the Manager")
+
+Total contract value: ₹1,80,000 (one lakh eighty thousand rupees), payable in three milestones. Influencer fees are paid by the Client directly to the influencers and are not part of this contract value.
+
+Milestone 1: Influencer Shortlist
+Amount: ₹50,000
+Due Date: 1st Feb 2027
+Acceptance Criteria:
+- A shortlist of 20 skincare influencers with 10,000 to 2,00,000 followers each
+- Audience demographics and engagement rate for every shortlisted influencer
+- Signed agreements with at least 12 influencers
+
+Milestone 2: Campaign Launch
+Amount: ₹70,000
+Due Date: 22nd Feb 2027
+Acceptance Criteria:
+- At least 12 influencers publish their posts within the launch week
+- Every post carries the #ad disclosure as required by ASCI guidelines
+
+Milestone 3: Wrap-up Report
+Amount: ₹60,000
+Due Date: 15th Mar 2027
+Acceptance Criteria:
+- Campaign report with total reach, engagement and discount-code sales per influencer
+
+Missed launch dates caused by the Manager will attract a deduction of ₹2,500 per influencer post.

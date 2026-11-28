@@ -1,0 +1,54 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 1084 >>
+stream
+BT /F1 10 Tf 14 TL 50 792 Td
+([SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]) Tj T*
+() Tj T*
+(CONSULTING AGREEMENT - CLOUD COST AUDIT) Tj T*
+() Tj T*
+(Client: Paisaplan Fintech Private Limited, Bengaluru) Tj T*
+(Consultant: Varun Iyengar, cloud infrastructure consultant, Bengaluru) Tj T*
+() Tj T*
+(The Consultant will audit the Client's AWS spending and recommend savings.) Tj T*
+() Tj T*
+(Milestone 1: Cloud Cost Audit and Recommendations) Tj T*
+(Amount: Rs. 1 lakh) Tj T*
+(Due Date: 2027-03-31) Tj T*
+(Acceptance Criteria:) Tj T*
+(- Cost breakdown by service and team for the last six months) Tj T*
+(- At least ten concrete savings recommendations, each with an estimated monthly saving) Tj T*
+(- Reserved-instance and savings-plan analysis) Tj T*
+(- Read-out meeting with the Client's CTO) Tj T*
+() Tj T*
+(Success bonus: if the Client's monthly AWS bill falls by more than 20% within three months of) Tj T*
+(the audit, the Client will pay a bonus of Rs. 50,000. The bonus is not a milestone and is not) Tj T*
+(held in escrow.) Tj T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000338 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1474
+%%EOF

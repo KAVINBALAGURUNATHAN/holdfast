@@ -1,0 +1,26 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+PACKAGING DESIGN AGREEMENT
+
+Client: Malabar Spice Traders, Kozhikode (proprietor: Mr. Abdul Rahman K.)
+Designer: Shreya Menon, packaging designer, Thrissur
+
+Client: Malabar Spice Traders
+Designer: Shreya Menon
+
+Milestone 1: Pouch Design for Six Spices
+Amount: INR 22,500.00
+Due Date: 07.01.2027
+Acceptance Criteria:
+- Front and back designs for six 100 g spice pouches
+- FSSAI-mandated label fields (licence number, net weight, MRP, best before) are placed on every pouch
+- Dielines match the printer's template
+
+Milestone 2: Gift Box and Print Supervision
+Amount: INR 17,500.00
+Due Date: 21.01.2027
+Acceptance Criteria:
+- Gift box design holding all six pouches
+- Designer attends one print-proof check at the printer's unit
+
+A one-time rush charge of INR 3,000.00 applies if the Client requests delivery earlier than the dates above.

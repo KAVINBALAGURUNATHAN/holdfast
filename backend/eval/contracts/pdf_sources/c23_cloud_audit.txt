@@ -1,0 +1,19 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+CONSULTING AGREEMENT - CLOUD COST AUDIT
+
+Client: Paisaplan Fintech Private Limited, Bengaluru
+Consultant: Varun Iyengar, cloud infrastructure consultant, Bengaluru
+
+The Consultant will audit the Client's AWS spending and recommend savings.
+
+Milestone 1: Cloud Cost Audit and Recommendations
+Amount: Rs. 1 lakh
+Due Date: 2027-03-31
+Acceptance Criteria:
+- Cost breakdown by service and team for the last six months
+- At least ten concrete savings recommendations, each with an estimated monthly saving
+- Reserved-instance and savings-plan analysis
+- Read-out meeting with the Client's CTO
+
+Success bonus: if the Client's monthly AWS bill falls by more than 20% within three months of the audit, the Client will pay a bonus of Rs. 50,000. The bonus is not a milestone and is not held in escrow.

@@ -1,0 +1,46 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+SOFTWARE DEVELOPMENT SERVICES AGREEMENT
+Ref: KC-APP-2026-07
+
+Parties
+Client: Dr. Meera Kulkarni, proprietor of Kulkarni Child Care Clinic, Kothrud, Pune
+Developer: Rohan Deshpande, independent software developer, Aundh, Pune
+Developer email: rohan.deshpande.dev@gmail.com
+
+Background
+The Client wants an Android and iOS appointment-booking app for her clinic with a small web admin panel.
+
+Total contract value: ₹5,00,000 (Rupees Five Lakh only), exclusive of GST.
+
+Milestone 1 - Requirements and UI Design
+Amount: ₹1,50,000
+Due date: 2027-01-15
+Acceptance criteria:
+- Signed-off requirements document listing all screens
+- Clickable Figma prototype of all patient-facing screens
+
+Milestone 2 - Core App Build
+Amount: ₹2,00,000
+Due date: 2027-02-28
+Acceptance criteria:
+- Patients can register and log in with OTP on Android and iOS
+- Patients can book, reschedule and cancel appointments
+- Appointment reminders are sent by SMS 24 hours before the slot
+- Admin panel shows the day's appointments for the doctor
+
+Milestone 3 - Payments and Testing
+Amount: ₹1,00,000
+Due date: 2027-03-20
+Acceptance criteria:
+- Razorpay consultation fee payment works in test mode
+- Test report covering at least 40 test cases is shared
+- No open critical bugs at handover
+
+Milestone 4 - Store Release
+Amount: ₹50,000
+Due date: 2027-04-05
+Acceptance criteria:
+- App is published on Google Play Store and Apple App Store under the Client's accounts
+
+Warranty: The Developer shall fix defects reported within 60 days of release at no extra cost.

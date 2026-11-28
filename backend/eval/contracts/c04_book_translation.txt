@@ -1,0 +1,17 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+TRANSLATION AGREEMENT
+
+This Translation Agreement is entered into between Sahyadri Publishers, a partnership firm at Shivajinagar, Pune (hereinafter "the Publisher"), and K. Lakshmi Narayanan, a freelance translator residing in Mylapore, Chennai (hereinafter "the Translator").
+
+Client: Sahyadri Publishers
+Translator: K. Lakshmi Narayanan
+
+The Translator shall translate the Hindi novel "Dhoop Ke Saaye" (approximately 62,000 words) into Tamil.
+
+Milestone 1: Complete Tamil Translation
+Fee: Rupees forty thousand only, payable on acceptance.
+Delivery: within 30 days of signing this agreement.
+Acceptance criteria: The full manuscript is translated into Tamil with no omitted chapters. The translation is delivered as an editable Word file using Unicode Tamil fonts. A glossary of recurring proper nouns and their chosen Tamil spellings is included.
+
+The Publisher shall hold all translation rights for the Tamil edition. The Translator shall be credited on the title page.

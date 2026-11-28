@@ -1,0 +1,45 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+INDEPENDENT CONTRACTOR AGREEMENT - DATA ENGINEERING
+
+Client: Datavault Analytics Private Limited, Gurugram
+Contractor: Siddharth Nair, Kochi
+
+The Contractor will build a data pipeline that collects public product-price data from five Indian e-commerce sites, cleans it and loads it into the Client's PostgreSQL warehouse.
+
+Milestone 1: Design Document
+Amount: INR 40000
+Due Date: 18/12/2026
+Acceptance Criteria:
+1. Architecture diagram and data model are documented
+2. Legal and robots.txt review for each of the five sites is documented
+
+Milestone 2: Scrapers
+Amount: INR 60000
+Due Date: 22/01/2027
+Acceptance Criteria:
+1. Scrapers for all five sites run successfully on the Client's server
+2. Each scraper handles pagination and rate limits itself to 1 request per second
+3. Unit tests cover the parsing code
+
+Milestone 3: Cleaning and Loading
+Amount: INR 60000
+Due Date: 19/02/2027
+Acceptance Criteria:
+1. Cleaned data loads into PostgreSQL daily via a scheduled job
+2. Duplicate products across sites are matched with at least 90% precision on a 200-item sample
+
+Milestone 4: Dashboard
+Amount: INR 30000
+Due Date: 12/03/2027
+Acceptance Criteria:
+1. A Metabase dashboard shows daily price trends per category
+
+Milestone 5: Handover
+Amount: INR 20000
+Due Date: 26/03/2027
+Acceptance Criteria:
+1. Runbook documentation is delivered
+2. A two-hour handover session is held with the Client's engineers
+
+Penalty: For every full week of delay attributable to the Contractor, INR 2,000 will be deducted from the next payment.

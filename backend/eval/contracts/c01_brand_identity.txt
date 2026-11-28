@@ -1,0 +1,36 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+BRAND IDENTITY DESIGN AGREEMENT
+
+This agreement is made on 2 December 2026 at Bengaluru.
+
+Client: Kaveri Coffee Roasters LLP, represented by its designated partner Mr. Suresh Gowda
+Designer: Ananya Rao, freelance graphic designer, Jayanagar, Bengaluru
+
+1. SCOPE
+The Designer will create a new visual identity for the Client's cafe chain, including logo, colour palette and basic stationery.
+
+2. MILESTONES
+
+Milestone 1: Logo Concepts and Final Logo
+Amount: Rs. 25,000
+Due Date: 20/12/2026
+Acceptance Criteria:
+- Three distinct logo concepts are presented
+- Final logo is delivered in SVG, PNG and PDF formats
+- Logo works in single-colour (black and white) version
+
+Milestone 2: Colour Palette and Stationery
+Amount: Rs. 15,000
+Due Date: 10/01/2027
+Acceptance Criteria:
+- Brand colour palette with HEX and CMYK values is documented
+- Business card and letterhead designs are print-ready
+
+3. LATE DELIVERY
+If a milestone is delivered late without the Client's written consent, a late fee of Rs. 500 per day shall be deducted from that milestone's payment.
+
+4. PAYMENT
+Payments are released from escrow within 5 working days of acceptance.
+
+Signed for the Client: Suresh Gowda          Signed by the Designer: Ananya Rao

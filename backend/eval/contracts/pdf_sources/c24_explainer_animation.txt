@@ -1,0 +1,32 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+ANIMATION SERVICES AGREEMENT
+
+Client: Swasthya Health Insurance Brokers Pvt. Ltd., Lucknow
+Animator: Farhan Qureshi, motion designer, Lucknow
+
+The Animator will produce a 90-second 2D explainer video in Hindi about how to file a cashless insurance claim.
+
+Milestone 1: Script and Storyboard
+Amount: Rs. 20,000
+Due Date: 18 December 2026
+Acceptance Criteria:
+- Hindi script of about 220 words approved by the Client
+- Storyboard frames for every scene
+
+Milestone 2: Animation
+Amount: Rs. 35,000
+Due Date: 22 January 2027
+Acceptance Criteria:
+- Full animation of 80 to 100 seconds at 1080p
+- Professional Hindi voice-over synced to the animation
+- Client's logo and colours used throughout
+
+Milestone 3: Final Delivery
+Amount: Rs. 25,000
+Due Date: 5 February 2027
+Acceptance Criteria:
+- Final video in MP4 and a 1:1 square version for Instagram
+- Hindi subtitles file
+
+Late delivery: Rs. 1,000 will be deducted for each day of delay beyond the due date.

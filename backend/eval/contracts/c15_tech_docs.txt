@@ -1,0 +1,26 @@
+[SYNTHETIC CONTRACT - written for HoldFast evaluation; all names and details are fictional]
+
+TECHNICAL WRITING SERVICES AGREEMENT
+
+Client: Quillbyte Software Solutions LLP, Chennai
+Writer: Priyanka Raghavan, technical writer, Chennai
+
+The Writer will produce developer documentation for the Client's payments API.
+
+Milestone 1: API Reference
+Amount: Rupees Twenty-Five Thousand (Rs. 25,000)
+Due Date: January 31, 2027
+Acceptance Criteria:
+- Every public endpoint is documented with request and response examples
+- Error codes are listed with their meaning
+- Documentation is written in Markdown and builds without errors in the Client's Docusaurus site
+
+Milestone 2: Guides and Tutorials
+Amount: Rupees Thirty-Five Thousand (Rs. 35,000)
+Due Date: February 28, 2027
+Acceptance Criteria:
+- A quick-start guide that takes a new developer from sign-up to a first test payment
+- Three integration tutorials (Node.js, Python and Java)
+- All code samples are tested against the sandbox
+
+Payment terms: within 7 days of acceptance. Interest at 1.5% per month applies to late payments.
